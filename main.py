@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # Va chercher l'adresse des fichiers et les retourne
     def open_file():
         browse_text.set("loading...")
-        file = askopenfilename(parent=root, title="Choose a file", filetype=[("Pdf file", "*.pdf")])
+        file = askopenfilename(parent=root, title="Choose a file", filetype=[("PDF file", "*.pdf")])
         if file and file not in liste_de_fichier_a_merge:
             liste_de_fichier_a_merge.append(file)
             print(liste_de_fichier_a_merge)
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     canvas.grid(columnspan=3, rowspan=2)
 
     def next_step():
-        return True
+        pass
 
     # submit button
     submit_text = tk.StringVar()
@@ -51,8 +51,8 @@ if __name__ == '__main__':
 
     root.mainloop()
 
-    file_1 = open_file()
-    file_2 = open_file()
+    file_1 = input()
+    file_2 = input()
     # "../test PDF Merger/01.pdf"
 
     merger.append(file_1)
