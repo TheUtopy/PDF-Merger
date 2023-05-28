@@ -6,14 +6,13 @@ merger = PdfWriter()
 
 if __name__ == '__main__':
 
-    # création d'une list vide pour stocker les adresses de fichier .pdf à merge
     liste_de_fichier_a_merge = []
 
-    # créer la fenêtre ainsi que la nomme
+    # créé la fenêtre et la nomme
     root = tk.Tk(className=" PDF Merger")
     # défini la taille de la fenêtre
     canvas = tk.Canvas(root, width=600, height=200)
-    canvas.grid(columnspan=3, rowspan=2)
+    canvas.grid(columnspan=3, rowspan=5)
 
     # instruction
     label = tk.Label(root, text="Select a .pdf file")
@@ -26,6 +25,9 @@ if __name__ == '__main__':
         if file and file not in liste_de_fichier_a_merge:
             liste_de_fichier_a_merge.append(file)
             print(liste_de_fichier_a_merge)
+            text_path.config(state='normal')
+            text_path.insert('end', file + "\n")
+            text_path.config(state='disabled')
         browse_text.set("Browse")
 
 
@@ -36,11 +38,15 @@ if __name__ == '__main__':
     browse_text.set("Browse")
     browse_btn.grid(column=1, row=1)
 
-    canvas = tk.Canvas(root, width=600, height=200)
-    canvas.grid(columnspan=3, rowspan=2)
+    # affichage des adresses des fichiers sélectionnés
+    text_path = tk.Text(root, width=60, height=10)
+    text_path.grid(column=1, row=2)
+    text_path.config(state='disabled')
 
     def next_step():
-        pass
+        text_path.config(state='normal')
+        text_path.delete('1.0', tk.END)
+        text_path.config(state='disabled')
 
     # submit button
     submit_text = tk.StringVar()
@@ -51,6 +57,9 @@ if __name__ == '__main__':
 
     root.mainloop()
 
+    #
+    #
+    #
     file_1 = input()
     file_2 = input()
     # "../test PDF Merger/01.pdf"
@@ -72,3 +81,4 @@ if __name__ == '__main__':
 
     merger.close()
     output.close()
+
